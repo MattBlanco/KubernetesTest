@@ -9,8 +9,8 @@ module.exports = app => {
     // Retrieve all recipes
     router.get("/", recipeController.findAll);
 
-    // Retrieve recipe by tag
-    router.get("/tag", recipeController.findByTag)
+    // Retrieve recipe by tags
+    router.get("/tags", recipeController.findByTag)
   
     // Retrieve all published recipes
     router.get("/published", recipeController.findAllPublished);

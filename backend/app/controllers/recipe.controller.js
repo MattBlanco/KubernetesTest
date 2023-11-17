@@ -10,7 +10,8 @@ exports.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
-    url: req.url.description,
+    url: req.body.url,
+    tags: req.body.tags,
   });
 
   newRecipe
@@ -44,10 +45,9 @@ exports.findAll = (req, res) => {
 };
 
 exports.findByTag = (req, res) => {
-  const tag = req.query.tag;
-  console.log(tag);
+  const desiredTags = req.body.tags;
 
-  Recipe.find({ tags: tag })
+  Recipe.find({ tags: desiredTags })
     .then((data) => {
       res.send(data);
     })
