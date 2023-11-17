@@ -6,7 +6,7 @@ class RecipeDataService {
   }
 
   getByTags() {
-    return http.get("/recipes/tags")
+    return http.get("/recipes/tags");
   }
 
   get(id) {
