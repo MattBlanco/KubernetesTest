@@ -23,6 +23,17 @@
             name="description"
           />
         </div>
+
+        <div class="form-group">
+          <label for="Url">URL</label>
+          <input
+            class="form-control"
+            id="url"
+            required
+            v-model="recipe.url"
+            name="url"
+          />
+        </div>
   
         <button @click="saveRecipe" class="btn btn-success">Submit</button>
       </div>
@@ -45,6 +56,8 @@
           id: null,
           title: "",
           description: "",
+          url: "",
+          tags: "",
           published: false
         },
         submitted: false
@@ -54,14 +67,16 @@
       saveRecipe() {
         var data = {
           title: this.recipe.title,
-          description: this.recipe.description
+          description: this.recipe.description,
+          url: this.recipe.url
         };
   
         RecipeDataService.create(data)
           .then(response => {
-            this.recipe.id = response.data.id;
             console.log(response.data);
+            this.recipe.id = response.data.id;
             this.submitted = true;
+            console.log(this.recipe.id)
           })
           .catch(e => {
             console.log(e);

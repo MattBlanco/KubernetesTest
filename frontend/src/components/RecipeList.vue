@@ -40,11 +40,14 @@
             <label><strong>Description:</strong></label> {{ currentRecipe.description }}
           </div>
           <div>
+            <label><strong>URL:</strong></label> {{ currentRecipe.url }}
+          </div>
+          <div>
             <label><strong>Status:</strong></label> {{ currentRecipe.published ? "Published" : "Pending" }}
           </div>
   
-          <a class="badge badge-warning"
-            :href="'/recipes/' + currentRecipe.id"
+          <a class="badge bg-warning"
+            :href="'/recipes/' + currentRecipe._id"
           >
             Edit
           </a>
