@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: blanco326/frontend:latest
+        image: blanco326/frontend:v1
         ports:
         - containerPort: 8080
         env:
