@@ -15,13 +15,13 @@
           />
         </div>
   
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label><strong>Status:</strong></label>
           {{ currentRecipe.published ? "Published" : "Pending" }}
-        </div>
+        </div> -->
       </form>
   
-      <button class="badge bg-primary mr-2"
+      <!-- <button class="badge bg-primary mr-2"
         v-if="currentRecipe.published"
         @click="updatePublished(false)"
       >
@@ -31,7 +31,7 @@
         @click="updatePublished(true)"
       >
         Publish
-      </button>
+      </button> -->
   
       <button class="badge bg-danger mr-2"
         @click="deleteRecipe"
@@ -76,23 +76,23 @@
           });
       },
   
-      updatePublished(status) {
-        var data = {
-          _id: this.currentRecipe._id,
-          title: this.currentRecipe.title,
-          description: this.currentRecipe.description,
-          published: status
-        };
+      // updatePublished(status) {
+      //   var data = {
+      //     _id: this.currentRecipe._id,
+      //     title: this.currentRecipe.title,
+      //     description: this.currentRecipe.description,
+      //     published: status
+      //   };
   
-        RecipeDataService.update(this.currentRecipe._id, data)
-          .then(response => {
-            this.currentRecipe.published = status;
-            console.log(response.data);
-          })
-          .catch(e => {
-            console.log(e);
-          });
-      },
+      //   RecipeDataService.update(this.currentRecipe._id, data)
+      //     .then(response => {
+      //       this.currentRecipe.published = status;
+      //       console.log(response.data);
+      //     })
+      //     .catch(e => {
+      //       console.log(e);
+      //     });
+      // },
   
       updateRecipe() {
         RecipeDataService.update(this.currentRecipe._id, this.currentRecipe)

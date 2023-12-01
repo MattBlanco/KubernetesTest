@@ -56,7 +56,7 @@
           id: null,
           title: "",
           description: "",
-          url: "",
+          url: null,
           tags: "",
           published: false
         },

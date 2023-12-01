@@ -39,11 +39,8 @@
           <div>
             <label><strong>Description:</strong></label> {{ currentRecipe.description }}
           </div>
-          <div>
-            <label><strong>URL:</strong></label> {{ currentRecipe.url }}
-          </div>
-          <div>
-            <label><strong>Status:</strong></label> {{ currentRecipe.published ? "Published" : "Pending" }}
+          <div v-if="currentRecipe.url != undefined" >
+            <label><strong>URL:</strong></label> <a :href="currentRecipe.url">Link</a>
           </div>
   
           <a class="badge bg-warning"

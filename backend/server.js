@@ -4,11 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
-
-app.use(cors(corsOptions));
+app.use(cors())
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -16,9 +12,15 @@ app.use(bodyParser.json());
 // parse request of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// use when starting application locally with node command
+let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
+
+// use with k8s
+let mongoUrlK8s = `mongodb://${process.env.USER_NAME}:${process.env.USER_PWD}@${process.env.DB_URL}`
+
 const db = require("./app/models");
 db.mongoose
-  .connect(db.url)
+  .connect(mongoUrlK8s)
   .then(() => {
     console.log("Connected to mongoDB!");
   })
@@ -34,7 +36,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/recipe.routes")(app);
 
-const PORT = process.env.PORT || 8080;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
