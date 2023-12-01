@@ -4,7 +4,12 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200,
+  })
+);
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -16,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 
 // use with k8s
-let mongoUrlK8s = `mongodb://${process.env.USER_NAME}:${process.env.USER_PWD}@${process.env.DB_URL}`
+let mongoUrlK8s = `mongodb://${process.env.USER_NAME}:${process.env.USER_PWD}@${process.env.DB_URL}`;
 
 const db = require("./app/models");
 db.mongoose
